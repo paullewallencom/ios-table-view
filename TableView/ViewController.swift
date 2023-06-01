@@ -10,6 +10,13 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var tableView : UITableView!
+    
+    let names = [
+        "John Smith",
+        "Dan Smith",
+        "Jason Smith",
+        "Mary Smith"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,8 +24,6 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
-
 }
 
 extension ViewController : UITableViewDelegate {
@@ -31,13 +36,13 @@ extension ViewController : UITableViewDelegate {
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return names.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "Hello World"
+        cell.textLabel?.text = names[indexPath.row]
         
         return cell
     }
